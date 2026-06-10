@@ -10,7 +10,7 @@ export default function Footer() {
         {/* Brand */}
         <div className="lg:col-span-1">
           <div className="flex items-center gap-3 mb-4">
-            <div className="relative w-12 h-12 bg-white rounded-xl p-1.5 shrink-0">
+            <div className="relative w-16 h-16 bg-white rounded-xl p-1.5 shrink-0">
               <Image src="/logo.png" alt="Apotek Keluarga" fill className="object-contain p-0.5" />
             </div>
             <div className="leading-snug">
