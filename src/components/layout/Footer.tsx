@@ -9,13 +9,13 @@ export default function Footer() {
       <div className="max-w-6xl mx-auto px-4 py-14 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
         {/* Brand */}
         <div className="lg:col-span-1">
-          <div className="flex items-center gap-2.5 mb-4">
-            <div className="relative w-9 h-9 bg-white rounded-lg p-1">
+          <div className="flex items-center gap-3 mb-4">
+            <div className="relative w-12 h-12 bg-white rounded-xl p-1.5 shrink-0">
               <Image src="/logo.png" alt="Apotek Keluarga" fill className="object-contain p-0.5" />
             </div>
-            <div className="leading-tight">
-              <div className="font-bold text-sm text-white tracking-wide">APOTEK</div>
-              <div className="font-bold text-sm text-rose-light tracking-wide">KELUARGA</div>
+            <div className="leading-snug">
+              <div className="font-extrabold text-base text-white tracking-widest">APOTEK</div>
+              <div className="font-extrabold text-base tracking-widest" style={{color: '#EAC9CD'}}>KELUARGA</div>
             </div>
           </div>
           <p className="text-sm leading-relaxed mb-5 text-white/60">

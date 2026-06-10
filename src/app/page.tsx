@@ -159,8 +159,10 @@ function Hero() {
             transition={{ duration: 0.8, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
             className="relative flex justify-center lg:justify-end"
           >
-            <div className="relative">
-              <div className="arch-card bg-blush/60 w-72 h-96 md:w-80 md:h-[28rem] overflow-hidden">
+            {/* Extra padding so floating cards don't clip outside viewport */}
+            <div className="relative mx-8">
+              {/* Arch photo card */}
+              <div className="arch-card bg-blush/60 w-64 h-[22rem] md:w-72 md:h-[26rem] overflow-hidden">
                 <Image
                   src="/dr-wildan.png"
                   alt="dr. Wildan A. Sutrisno, SpOG"
@@ -170,40 +172,43 @@ function Hero() {
                 />
               </div>
 
-              <motion.div
-                initial={{ opacity: 0, scale: 0.8 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.5, delay: 0.7 }}
-                className="absolute -left-6 top-10 bg-white rounded-card shadow-card px-4 py-3 flex items-center gap-2.5"
-              >
-                <div className="w-10 h-10 rounded-xl bg-rose/10 flex items-center justify-center">
-                  <Star size={18} className="text-rose fill-rose" />
-                </div>
-                <div>
-                  <div className="font-extrabold text-ink text-base">4.9/5</div>
-                  <div className="text-xs text-muted">200+ Pasien Puas</div>
-                </div>
-              </motion.div>
-
-              <motion.div
-                initial={{ opacity: 0, scale: 0.8 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.5, delay: 0.85 }}
-                className="absolute -right-5 bottom-16 bg-white rounded-card shadow-card px-4 py-3"
-              >
-                <div className="text-xs text-muted mb-1">Antrian Digital</div>
-                <div className="font-extrabold text-rose text-lg">AK-007</div>
-                <div className="text-xs text-sage-dark font-medium">Estimasi 15 menit</div>
-              </motion.div>
-
+              {/* Doctor name strip — anchored to very bottom of the arch */}
               <motion.div
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.95 }}
-                className="absolute bottom-6 left-1/2 -translate-x-1/2 bg-burgundy/90 backdrop-blur-sm text-white rounded-card px-5 py-2.5 text-center whitespace-nowrap"
+                className="absolute bottom-0 left-0 right-0 bg-burgundy/90 backdrop-blur-sm text-white px-5 py-3 text-center rounded-b-[2rem]"
               >
                 <div className="font-bold text-sm">dr. Wildan A. Sutrisno</div>
                 <div className="text-xs text-white/70">SpOG · Dokter Kandungan</div>
+              </motion.div>
+
+              {/* Rating badge — left side, chest level (clear of face) */}
+              <motion.div
+                initial={{ opacity: 0, scale: 0.8 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.5, delay: 0.7 }}
+                className="absolute -left-14 top-[52%] bg-white rounded-card shadow-card px-3.5 py-2.5 flex items-center gap-2.5"
+              >
+                <div className="w-9 h-9 rounded-xl bg-rose/10 flex items-center justify-center shrink-0">
+                  <Star size={16} className="text-rose fill-rose" />
+                </div>
+                <div>
+                  <div className="font-extrabold text-ink text-sm leading-tight">4.9/5</div>
+                  <div className="text-[11px] text-muted">200+ Pasien Puas</div>
+                </div>
+              </motion.div>
+
+              {/* Queue badge — right side, torso level (clear of face) */}
+              <motion.div
+                initial={{ opacity: 0, scale: 0.8 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.5, delay: 0.85 }}
+                className="absolute -right-14 top-[42%] bg-white rounded-card shadow-card px-3.5 py-2.5"
+              >
+                <div className="text-[11px] text-muted mb-0.5">Antrian Digital</div>
+                <div className="font-extrabold text-rose text-base leading-tight">AK-007</div>
+                <div className="text-[11px] text-sage-dark font-medium">Estimasi 15 menit</div>
               </motion.div>
             </div>
           </motion.div>

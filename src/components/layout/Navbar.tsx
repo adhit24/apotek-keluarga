@@ -42,8 +42,8 @@ export default function Navbar() {
       >
         <nav className="max-w-6xl mx-auto px-4 flex items-center justify-between">
           {/* Logo */}
-          <Link href="/" className="flex items-center gap-2.5 group">
-            <div className="relative w-9 h-9">
+          <Link href="/" className="flex items-center gap-3 group">
+            <div className="relative w-14 h-14 shrink-0">
               <Image
                 src="/logo.png"
                 alt="Apotek Keluarga"
@@ -51,9 +51,9 @@ export default function Navbar() {
                 className="object-contain"
               />
             </div>
-            <div className="leading-tight">
-              <div className="font-bold text-sm text-ink tracking-wide">APOTEK</div>
-              <div className="font-bold text-sm text-rose tracking-wide">KELUARGA</div>
+            <div className="leading-snug">
+              <div className="font-extrabold text-base text-ink tracking-widest">APOTEK</div>
+              <div className="font-extrabold text-base text-rose tracking-widest">KELUARGA</div>
             </div>
           </Link>
 
@@ -124,10 +124,13 @@ export default function Navbar() {
             >
               <div className="flex items-center justify-between p-5 border-b border-blush">
                 <div className="flex items-center gap-2.5">
-                  <div className="relative w-8 h-8">
+                  <div className="relative w-11 h-11 shrink-0">
                     <Image src="/logo.png" alt="Apotek Keluarga" fill className="object-contain" />
                   </div>
-                  <span className="font-700 text-ink text-sm">Apotek Keluarga</span>
+                  <div className="leading-snug">
+                    <div className="font-extrabold text-sm text-ink tracking-widest">APOTEK</div>
+                    <div className="font-extrabold text-sm text-rose tracking-widest">KELUARGA</div>
+                  </div>
                 </div>
                 <button
                   onClick={() => setMobileOpen(false)}
