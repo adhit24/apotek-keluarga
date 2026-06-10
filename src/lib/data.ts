@@ -73,6 +73,12 @@ export interface Testimonial {
   avatar: string
 }
 
+export interface ArticleBlock {
+  type: 'heading' | 'paragraph' | 'list' | 'callout'
+  text?: string
+  items?: string[]
+}
+
 export interface Article {
   id: string
   slug: string
@@ -82,6 +88,9 @@ export interface Article {
   readTime: string
   date: string
   image: string
+  content?: ArticleBlock[]
+  tags?: string[]
+  author?: string
 }
 
 export interface FAQ {
@@ -275,9 +284,246 @@ export const testimonials: Testimonial[] = [
 
 // ─── Articles ─────────────────────────────────────────────────────────────────
 export const articles: Article[] = [
-  { id: '1', slug: 'tanda-kehamilan-sehat', title: 'Tanda-Tanda Kehamilan Sehat yang Perlu Ibu Ketahui', excerpt: 'Mengenali tanda kehamilan sehat sejak dini membantu ibu memantau perkembangan janin dengan lebih baik.', category: 'Kehamilan', readTime: '5 menit', date: '10 Juni 2025', image: '' },
-  { id: '2', slug: 'tips-program-hamil', title: '7 Tips Program Hamil yang Terbukti Efektif', excerpt: 'Mempersiapkan kehamilan membutuhkan perencanaan matang. Berikut tips berbasis medis untuk memaksimalkan peluang hamil.', category: 'Program Hamil', readTime: '7 menit', date: '5 Juni 2025', image: '' },
-  { id: '3', slug: 'manfaat-usg-4d', title: 'Kenapa USG 4D Penting di Trimester Kedua?', excerpt: 'USG 4D bukan sekadar momen emosional — ada manfaat medis penting yang perlu ibu pahami.', category: 'USG', readTime: '4 menit', date: '1 Juni 2025', image: '' },
+  {
+    id: '1',
+    slug: 'tanda-kehamilan-sehat',
+    title: 'Tanda-Tanda Kehamilan Sehat yang Perlu Ibu Ketahui',
+    excerpt: 'Mengenali tanda kehamilan sehat sejak dini membantu ibu memantau perkembangan janin dengan lebih baik.',
+    category: 'Kehamilan',
+    readTime: '5 menit',
+    date: '10 Juni 2025',
+    image: '',
+    author: 'dr. Wildan A. Sutrisno, SpOG',
+    tags: ['kehamilan sehat', 'tanda kehamilan', 'ibu hamil', 'kandungan'],
+    content: [
+      { type: 'paragraph', text: 'Kehamilan yang sehat adalah dambaan setiap pasangan. Namun bagaimana cara mengetahui bahwa kehamilan Anda berjalan dengan baik? Mengenali tanda-tanda kehamilan sehat sejak awal adalah langkah penting untuk ketenangan pikiran ibu dan pengawasan medis yang tepat.' },
+      { type: 'heading', text: '1. Pertambahan Berat Badan yang Wajar' },
+      { type: 'paragraph', text: 'Pertambahan berat badan yang ideal selama kehamilan bervariasi tergantung berat badan awal ibu. Secara umum, kenaikan berat badan yang direkomendasikan adalah 11-16 kg untuk ibu dengan berat badan normal. Kenaikan yang terlalu cepat atau terlalu lambat perlu dievaluasi oleh dokter kandungan.' },
+      { type: 'heading', text: '2. Gerakan Janin yang Aktif' },
+      { type: 'paragraph', text: 'Merasakan gerakan janin pertama kali (quickening) biasanya terjadi antara minggu 16-25 kehamilan. Setelah itu, ibu seharusnya merasakan minimal 10 gerakan janin dalam 2 jam. Gerakan aktif adalah salah satu indikator terbaik kesehatan janin.' },
+      { type: 'heading', text: '3. Tekanan Darah Stabil' },
+      { type: 'paragraph', text: 'Tekanan darah normal selama kehamilan adalah di bawah 140/90 mmHg. Tekanan darah tinggi (hipertensi gestasional atau preeklamsia) adalah komplikasi serius yang memerlukan penanganan segera. Itulah mengapa pemeriksaan rutin sangat penting.' },
+      { type: 'heading', text: '4. Detak Jantung Janin Normal' },
+      { type: 'paragraph', text: 'Detak jantung janin yang normal berkisar antara 120-160 denyut per menit. Detak jantung dapat dipantau melalui USG atau CTG (Cardiotocography). Pemantauan rutin memastikan janin mendapatkan oksigen dan nutrisi yang cukup.' },
+      { type: 'heading', text: '5. Hasil Laboratorium dalam Batas Normal' },
+      { type: 'list', items: [
+        'Hemoglobin ≥ 11 g/dL (mencegah anemia)',
+        'Gula darah terkontrol (mencegah diabetes gestasional)',
+        'Urin bebas protein (indikator fungsi ginjal sehat)',
+        'Golongan darah dan Rhesus teridentifikasi',
+      ]},
+      { type: 'callout', text: 'Jika Anda belum melakukan pemeriksaan ANC (Antenatal Care) secara rutin, segera konsultasikan dengan dokter kandungan. Pemeriksaan rutin setiap 4 minggu di trimester 1-2, dan setiap 2 minggu di trimester 3 adalah standar medis yang direkomendasikan.' },
+      { type: 'heading', text: 'Kapan Harus ke Dokter Segera?' },
+      { type: 'list', items: [
+        'Perdarahan vagina, meski sedikit',
+        'Nyeri perut hebat yang tidak mereda',
+        'Demam di atas 38°C',
+        'Gerakan janin berkurang drastis',
+        'Bengkak mendadak di wajah, tangan, atau kaki',
+        'Sakit kepala hebat dan gangguan penglihatan',
+      ]},
+      { type: 'paragraph', text: 'Kehamilan sehat adalah hasil dari pemantauan yang konsisten dan komunikasi yang baik antara ibu dan dokter kandungan. Jangan ragu untuk berkonsultasi kapanpun Anda merasa ada yang tidak biasa.' },
+    ],
+  },
+  {
+    id: '2',
+    slug: 'tips-program-hamil',
+    title: '7 Tips Program Hamil yang Terbukti Efektif',
+    excerpt: 'Mempersiapkan kehamilan membutuhkan perencanaan matang. Berikut tips berbasis medis untuk memaksimalkan peluang hamil.',
+    category: 'Program Hamil',
+    readTime: '7 menit',
+    date: '5 Juni 2025',
+    image: '',
+    author: 'dr. Wildan A. Sutrisno, SpOG',
+    tags: ['program hamil', 'tips hamil', 'kesuburan', 'perencanaan kehamilan'],
+    content: [
+      { type: 'paragraph', text: 'Program hamil adalah proses terstruktur yang dirancang untuk meningkatkan peluang kehamilan. Berbeda dengan "mencoba hamil" secara spontan, program hamil melibatkan evaluasi medis, penyesuaian gaya hidup, dan pemantauan siklus yang sistematis.' },
+      { type: 'heading', text: 'Tip 1: Mulai dengan Konsultasi Dokter Kandungan' },
+      { type: 'paragraph', text: 'Langkah pertama yang sering dilewatkan adalah konsultasi awal dengan SpOG. Dokter akan melakukan evaluasi lengkap termasuk pemeriksaan fisik, USG rahim, analisis semen suami, dan panel hormon reproduksi. Memahami kondisi awal membantu menetapkan langkah yang tepat.' },
+      { type: 'heading', text: 'Tip 2: Pantau Masa Subur dengan Tepat' },
+      { type: 'paragraph', text: 'Masa subur terjadi sekitar hari ke-12 hingga 16 dari siklus 28 hari. Untuk menentukan masa subur yang akurat, gunakan kombinasi: mencatat siklus haid, memantau lendir serviks, dan menggunakan alat prediksi ovulasi (OPK). USG folikel juga bisa dilakukan untuk memantau perkembangan sel telur secara langsung.' },
+      { type: 'heading', text: 'Tip 3: Optimalkan Nutrisi Pra-Kehamilan' },
+      { type: 'list', items: [
+        'Asam folat 400mcg/hari — mulai 3 bulan sebelum program hamil',
+        'Zat besi cukup — cegah anemia sebelum hamil',
+        'Vitamin D dan kalsium — penting untuk pembentukan tulang janin',
+        'Omega-3 (DHA/EPA) — mendukung perkembangan otak janin',
+        'Hindari alkohol, rokok, dan kafein berlebih',
+      ]},
+      { type: 'heading', text: 'Tip 4: Jaga Berat Badan Ideal' },
+      { type: 'paragraph', text: 'BMI yang ideal (18.5-24.9) meningkatkan peluang kehamilan secara signifikan. Kelebihan berat badan dapat menyebabkan resistensi insulin yang mengganggu ovulasi. Sebaliknya, berat badan terlalu rendah juga dapat menekan produksi hormon reproduksi.' },
+      { type: 'heading', text: 'Tip 5: Kelola Stres' },
+      { type: 'paragraph', text: 'Stres kronis meningkatkan kortisol yang mengganggu keseimbangan hormon reproduksi. Teknik relaksasi seperti yoga prenatal, meditasi, atau sekadar berjalan pagi dapat membantu menurunkan kadar stres secara bermakna.' },
+      { type: 'heading', text: 'Tip 6: Evaluasi Kondisi Medis yang Ada' },
+      { type: 'list', items: [
+        'PCOS (Polycystic Ovary Syndrome) — perlu penanganan khusus',
+        'Mioma atau endometriosis — evaluasi dampaknya pada kesuburan',
+        'Tiroid — hipo/hipertiroid mengganggu siklus haid',
+        'Diabetes — perlu kontrol gula darah sebelum hamil',
+      ]},
+      { type: 'heading', text: 'Tip 7: Beri Waktu yang Realistis' },
+      { type: 'paragraph', text: 'Pasangan dengan kesuburan normal memiliki peluang kehamilan 85% dalam 1 tahun. Jika belum hamil setelah 12 bulan mencoba (atau 6 bulan untuk usia di atas 35 tahun), evaluasi lebih lanjut sangat dianjurkan.' },
+      { type: 'callout', text: 'Program hamil di Apotek Keluarga meliputi evaluasi lengkap kedua pasangan, pemantauan ovulasi dengan USG folikel, dan panduan medis personal dari dr. Wildan A. Sutrisno, SpOG. Konsultasi pertama bisa diawali dengan booking online.' },
+    ],
+  },
+  {
+    id: '3',
+    slug: 'manfaat-usg-4d',
+    title: 'Kenapa USG 4D Penting di Trimester Kedua?',
+    excerpt: 'USG 4D bukan sekadar momen emosional — ada manfaat medis penting yang perlu ibu pahami.',
+    category: 'USG',
+    readTime: '4 menit',
+    date: '1 Juni 2025',
+    image: '',
+    author: 'dr. Wildan A. Sutrisno, SpOG',
+    tags: ['USG 4D', 'USG kehamilan', 'pemeriksaan janin', 'trimester kedua'],
+    content: [
+      { type: 'paragraph', text: 'Banyak ibu hamil mengenal USG 4D sebagai "momen melihat wajah bayi". Namun di balik momen emosional itu, terdapat nilai diagnostik yang sangat penting — terutama jika dilakukan di trimester kedua kehamilan.' },
+      { type: 'heading', text: 'Apa Perbedaan USG 2D, 3D, dan 4D?' },
+      { type: 'list', items: [
+        'USG 2D — gambar dua dimensi, standar untuk pemantauan rutin',
+        'USG 3D — gambar tiga dimensi statis, detail anatomi lebih jelas',
+        'USG 4D — video real-time tiga dimensi, menampilkan gerakan janin',
+      ]},
+      { type: 'heading', text: 'Manfaat Medis USG 4D' },
+      { type: 'paragraph', text: 'Selain keindahan visual, USG 4D memberikan informasi medis yang tidak bisa diperoleh dari USG 2D biasa. Dokter dapat mengevaluasi ekspresi wajah, gerakan otot, dan respons janin terhadap stimulus.' },
+      { type: 'list', items: [
+        'Deteksi kelainan wajah (celah bibir/langit-langit) lebih akurat',
+        'Evaluasi posisi dan fungsi plasenta',
+        'Penilaian volume cairan ketuban (AFI)',
+        'Pemantauan berat estimasi janin (EFW)',
+        'Evaluasi aliran darah tali pusat (Doppler)',
+        'Deteksi kelainan anatomi mayor pada trimester 2',
+      ]},
+      { type: 'heading', text: 'Waktu Terbaik USG 4D' },
+      { type: 'paragraph', text: 'Trimester kedua — khususnya minggu ke-26 hingga 30 — adalah waktu optimal untuk USG 4D. Pada periode ini, janin sudah memiliki lapisan lemak yang membuat gambar lebih jelas, namun ruang rahim masih cukup untuk melihat seluruh tubuh.' },
+      { type: 'callout', text: 'Sebelum minggu ke-26, wajah janin masih terlalu kurus sehingga gambar 4D terlihat kurang jelas. Setelah minggu ke-32, kepala janin sering sudah masuk panggul sehingga sudut pandang terbatas.' },
+      { type: 'heading', text: 'Persiapan Sebelum USG 4D' },
+      { type: 'list', items: [
+        'Minum 2-3 gelas air putih 30 menit sebelum pemeriksaan',
+        'Konsumsi makanan manis ringan untuk meningkatkan aktivitas janin',
+        'Pilih waktu pagi atau siang saat janin biasanya aktif',
+        'Bawa anggota keluarga untuk berbagi momen bersama',
+      ]},
+      { type: 'paragraph', text: 'USG 4D di Apotek Keluarga menggunakan perangkat ultrasonografi modern dan dilakukan langsung oleh dr. Wildan A. Sutrisno, SpOG. Hasilnya disimpan dalam format video digital yang bisa Anda simpan sebagai kenangan pertama bersama si kecil.' },
+    ],
+  },
+  {
+    id: '4',
+    slug: 'dokter-kandungan-cirebon',
+    title: 'Dokter Kandungan Cirebon — Panduan Memilih SpOG yang Tepat',
+    excerpt: 'Memilih dokter kandungan di Cirebon adalah keputusan penting. Panduan ini membantu Anda menemukan SpOG yang sesuai untuk perjalanan kehamilan Anda.',
+    category: 'Panduan',
+    readTime: '6 menit',
+    date: '15 Juni 2025',
+    image: '',
+    author: 'Tim Apotek Keluarga',
+    tags: ['dokter kandungan Cirebon', 'SpOG Cirebon', 'klinik kandungan Cirebon', 'pilih dokter kandungan'],
+    content: [
+      { type: 'paragraph', text: 'Cirebon memiliki sejumlah dokter spesialis obstetri dan ginekologi (SpOG) yang berpraktik di berbagai klinik dan rumah sakit. Memilih dokter kandungan yang tepat adalah salah satu keputusan terpenting dalam perjalanan kehamilan Anda.' },
+      { type: 'heading', text: 'Mengapa Memilih Dokter Kandungan yang Tepat Itu Penting?' },
+      { type: 'paragraph', text: 'Hubungan antara ibu hamil dan dokter kandungannya adalah fondasi dari pengalaman kehamilan yang positif. Dokter yang baik tidak hanya kompeten secara medis, tetapi juga mampu berkomunikasi dengan baik, menjawab pertanyaan dengan sabar, dan membuat Anda merasa aman setiap kunjungan.' },
+      { type: 'heading', text: 'Kriteria Dokter Kandungan yang Baik' },
+      { type: 'list', items: [
+        'Memiliki gelar SpOG (Spesialis Obstetri dan Ginekologi) resmi',
+        'Terdaftar di POGI (Perkumpulan Obstetri dan Ginekologi Indonesia)',
+        'Praktik di fasilitas kesehatan yang bersih dan terakreditasi',
+        'Komunikatif dan sabar dalam menjelaskan kondisi kesehatan',
+        'Memiliki sistem booking yang teratur (tidak membuat pasien menunggu lama)',
+        'Tersedia fasilitas USG di tempat praktik',
+      ]},
+      { type: 'heading', text: 'Dokter Kandungan di Cirebon: Apa yang Perlu Diketahui' },
+      { type: 'paragraph', text: 'Di Cirebon, dokter kandungan tersebar di beberapa lokasi — mulai dari klinik pratama, klinik spesialis, hingga rumah sakit umum dan swasta. Untuk kehamilan dengan risiko rendah, klinik spesialis sering menjadi pilihan terbaik karena waktu tunggu lebih pendek dan suasana lebih personal.' },
+      { type: 'heading', text: 'Pertanyaan yang Perlu Ditanyakan saat Pertama Kali Berkonsultasi' },
+      { type: 'list', items: [
+        'Berapa sering saya perlu kontrol selama kehamilan?',
+        'Fasilitas apa saja yang tersedia (USG 2D/3D/4D, CTG, lab)?',
+        'Apakah dokter bisa dihubungi di luar jam praktik untuk kedaruratan?',
+        'Di rumah sakit mana dokter berpraktik untuk proses persalinan?',
+        'Bagaimana prosedur jika terjadi komplikasi?',
+      ]},
+      { type: 'heading', text: 'dr. Wildan A. Sutrisno, SpOG — Cirebon' },
+      { type: 'paragraph', text: 'dr. Wildan A. Sutrisno, SpOG adalah dokter spesialis kandungan yang berpraktik di Apotek Keluarga (Jl. Gerilyawan No.5, Cirebon) dan RS Medimas Cirebon. Dikenal dengan pendekatan yang hangat dan teliti, beliau melayani konsultasi kandungan, program hamil, USG 2D/3D/4D, ANC rutin, serta berbagai layanan kesehatan reproduksi wanita.' },
+      { type: 'callout', text: 'Booking online tersedia 24 jam. Pilih tanggal, waktu, dan dokter sesuai kebutuhan Anda — tanpa harus menghubungi admin via WhatsApp.' },
+    ],
+  },
+  {
+    id: '5',
+    slug: 'usg-4d-cirebon',
+    title: 'USG 4D di Cirebon — Kapan Waktu Terbaik dan Apa yang Bisa Dilihat',
+    excerpt: 'Ingin tahu pengalaman USG 4D di Cirebon? Simak panduan lengkap tentang waktu terbaik, persiapan, dan apa yang bisa dilihat dari pemeriksaan ini.',
+    category: 'USG',
+    readTime: '5 menit',
+    date: '20 Juni 2025',
+    image: '',
+    author: 'dr. Wildan A. Sutrisno, SpOG',
+    tags: ['USG 4D Cirebon', 'USG kehamilan Cirebon', '4D scan Cirebon', 'klinik USG Cirebon'],
+    content: [
+      { type: 'paragraph', text: 'USG 4D semakin populer di kalangan ibu hamil di Cirebon. Teknologi ini memungkinkan orang tua untuk "bertemu" dengan bayi mereka bahkan sebelum lahir — melihat ekspresi wajah, gerakan tangan, bahkan saat bayi menguap atau tersenyum.' },
+      { type: 'heading', text: 'Apa yang Bisa Dilihat dari USG 4D?' },
+      { type: 'paragraph', text: 'USG 4D menampilkan citra tiga dimensi dalam video real-time. Berbeda dengan USG 2D yang menampilkan gambar datar hitam-putih, USG 4D menghasilkan video berwarna keemasan yang memperlihatkan detail wajah dan tubuh bayi secara nyata.' },
+      { type: 'list', items: [
+        'Wajah bayi: pipi, hidung, bibir, dan ekspresi',
+        'Gerakan real-time: menguap, menyedot jempol, menendang',
+        'Posisi dan presentasi janin',
+        'Pergerakan tangan dan kaki',
+        'Aliran darah tali pusat (jika dilengkapi Doppler)',
+      ]},
+      { type: 'heading', text: 'Waktu Terbaik USG 4D di Cirebon' },
+      { type: 'paragraph', text: 'Waktu optimal untuk USG 4D adalah antara minggu ke-26 dan ke-30 kehamilan (trimester ketiga awal). Pada periode ini janin sudah cukup besar untuk terlihat detailnya, namun belum terlalu besar sehingga masih bisa terlihat seluruh tubuhnya dalam satu bidang.' },
+      { type: 'callout', text: 'Tips: Makan camilan manis 30 menit sebelum USG untuk membuat bayi lebih aktif. Bayi yang aktif bergerak akan menghasilkan gambar dan video 4D yang lebih dinamis.' },
+      { type: 'heading', text: 'Berapa Biaya USG 4D di Cirebon?' },
+      { type: 'paragraph', text: 'Biaya USG 4D bervariasi tergantung fasilitas. Di Apotek Keluarga, pemeriksaan dilakukan langsung oleh dr. Wildan A. Sutrisno, SpOG dengan peralatan modern. Hasilnya disimpan dalam format video digital. Untuk informasi biaya terkini, hubungi kami via WhatsApp atau booking online.' },
+      { type: 'heading', text: 'Lokasi USG 4D dr. Wildan di Cirebon' },
+      { type: 'list', items: [
+        'Apotek Keluarga — Jl. Gerilyawan No.5, Cirebon (Sen-Sab)',
+        'RS Medimas Cirebon — Selasa dan Kamis pagi',
+      ]},
+      { type: 'paragraph', text: 'Booking USG 4D bisa dilakukan secara online 24 jam melalui website ini. Pilih layanan USG 4D, pilih lokasi dan tanggal yang sesuai, dan konfirmasi jadwal Anda.' },
+    ],
+  },
+  {
+    id: '6',
+    slug: 'program-hamil-cirebon',
+    title: 'Program Hamil Cirebon — Langkah Medis yang Terbukti Efektif',
+    excerpt: 'Sudah lama mencoba hamil tapi belum berhasil? Program hamil terstruktur bersama dokter SpOG di Cirebon bisa menjadi solusi yang Anda butuhkan.',
+    category: 'Program Hamil',
+    readTime: '8 menit',
+    date: '25 Juni 2025',
+    image: '',
+    author: 'dr. Wildan A. Sutrisno, SpOG',
+    tags: ['program hamil Cirebon', 'dokter kesuburan Cirebon', 'susah hamil Cirebon', 'promil Cirebon'],
+    content: [
+      { type: 'paragraph', text: 'Mendambakan kehadiran buah hati adalah impian setiap pasangan. Namun tidak semua kehamilan terjadi dengan mudah. Jika Anda sudah mencoba selama lebih dari 12 bulan (atau 6 bulan untuk usia di atas 35 tahun) tanpa hasil, program hamil terstruktur bisa menjadi langkah selanjutnya.' },
+      { type: 'heading', text: 'Apa itu Program Hamil?' },
+      { type: 'paragraph', text: 'Program hamil (promil) adalah serangkaian evaluasi dan intervensi medis yang bertujuan mengidentifikasi dan mengatasi penyebab kesulitan hamil. Ini bukan "obat ajaib" — melainkan pendekatan ilmiah yang sistematis untuk meningkatkan peluang kehamilan.' },
+      { type: 'heading', text: 'Langkah-Langkah Program Hamil di Apotek Keluarga' },
+      { type: 'list', items: [
+        'Konsultasi awal & anamnesis lengkap (riwayat haid, riwayat KB, dll)',
+        'Pemeriksaan fisik dan ginekologi',
+        'USG rahim dan ovarium untuk evaluasi anatomi',
+        'Pemeriksaan hormon reproduksi (FSH, LH, AMH, Prolaktin)',
+        'Analisis semen suami (sperma count, motilitas, morfologi)',
+        'Pemantauan ovulasi dengan USG folikel',
+        'Rencana intervensi sesuai temuan (clomid, inseminasi, dll)',
+      ]},
+      { type: 'heading', text: 'Penyebab Umum Kesulitan Hamil' },
+      { type: 'paragraph', text: 'Berdasarkan data medis, penyebab kesulitan hamil terbagi merata antara faktor perempuan, faktor laki-laki, faktor keduanya, dan faktor yang tidak dapat dijelaskan (unexplained infertility).' },
+      { type: 'list', items: [
+        'Faktor ovulasi (PCOS, gangguan tiroid, stres berat)',
+        'Faktor tuba falopi (tersumbat akibat infeksi atau endometriosis)',
+        'Faktor rahim (mioma, polip, septum uteri)',
+        'Faktor sperma (oligospermia, asthenospermia, azoospermia)',
+        'Faktor gabungan kedua pasangan',
+      ]},
+      { type: 'heading', text: 'Berapa Lama Program Hamil Berlangsung?' },
+      { type: 'paragraph', text: 'Durasi program hamil bervariasi tergantung temuan evaluasi awal. Untuk kasus ringan (gangguan ovulasi saja), perbaikan bisa terlihat dalam 3-6 siklus. Untuk kasus yang memerlukan tindakan lebih lanjut, dokter akan merujuk ke fasilitas yang sesuai.' },
+      { type: 'callout', text: 'dr. Wildan A. Sutrisno, SpOG menerima konsultasi program hamil di Apotek Keluarga Cirebon. Pendekatan beliau: hangat, teliti, dan berbasis bukti ilmiah. Banyak pasangan yang sudah berhasil mendapatkan momongan setelah menjalani program hamil bersama beliau.' },
+      { type: 'heading', text: 'Mulai dari Mana?' },
+      { type: 'paragraph', text: 'Langkah pertama adalah konsultasi awal. Tidak perlu mempersiapkan apa-apa selain histori haid Anda. Dokter akan memandu seluruh proses evaluasi dan memberikan penjelasan lengkap di setiap tahap.' },
+      { type: 'paragraph', text: 'Booking konsultasi program hamil dapat dilakukan secara online 24 jam melalui website ini. Pilih layanan "Program Hamil", pilih lokasi dan jadwal yang sesuai, dan mulai perjalanan Anda bersama kami.' },
+    ],
+  },
 ]
 
 // ─── FAQ ──────────────────────────────────────────────────────────────────────

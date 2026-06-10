@@ -1,10 +1,22 @@
+import type { Metadata } from 'next'
 import Link from 'next/link'
 import { ArrowRight, Clock } from 'lucide-react'
 import Navbar from '@/components/layout/Navbar'
 import Footer from '@/components/layout/Footer'
 import { services } from '@/lib/data'
 
-const categories = ['Semua', 'Kandungan', 'USG', 'Keluarga', 'Pasca Melahirkan', 'Reproduksi', 'THT']
+export const metadata: Metadata = {
+  title: 'Layanan Klinik — Kandungan, USG, THT & Keluarga',
+  description:
+    'Layanan lengkap Apotek Keluarga Cirebon: konsultasi kandungan, USG 2D/3D/4D, antenatal care, program hamil, THT, dan kesehatan keluarga bersama dr. Wildan SpOG.',
+  keywords: ['layanan kandungan Cirebon', 'USG 4D Cirebon', 'program hamil Cirebon', 'klinik keluarga Cirebon', 'THT Cirebon'],
+  openGraph: {
+    title: 'Layanan Apotek Keluarga Cirebon | Kandungan & Keluarga',
+    description: 'Konsultasi kandungan, USG, program hamil, dan kesehatan keluarga di Cirebon.',
+    type: 'website',
+  },
+}
+
 
 export default function ServicesPage() {
   const byCategory = services.reduce<Record<string, typeof services>>((acc, s) => {

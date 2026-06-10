@@ -1,9 +1,22 @@
+import type { Metadata } from 'next'
 import Link from 'next/link'
 import Image from 'next/image'
 import { Clock, ArrowRight, Calendar, MapPin } from 'lucide-react'
 import Navbar from '@/components/layout/Navbar'
 import Footer from '@/components/layout/Footer'
 import { doctors, locations } from '@/lib/data'
+
+export const metadata: Metadata = {
+  title: 'Jadwal Praktik — dr. Wildan SpOG Cirebon',
+  description:
+    'Jadwal praktik dr. Wildan A. Sutrisno, SpOG di Apotek Keluarga dan RS Medimas Cirebon. Cek ketersediaan jadwal dan booking online langsung.',
+  keywords: ['jadwal dokter kandungan Cirebon', 'jadwal SpOG Cirebon', 'jam praktek dr Wildan Cirebon'],
+  openGraph: {
+    title: 'Jadwal Praktik dr. Wildan SpOG | Apotek Keluarga Cirebon',
+    description: 'Lihat jadwal praktek dan booking online dokter kandungan Cirebon.',
+    type: 'website',
+  },
+}
 
 const DAY_ORDER = ['Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu', 'Minggu']
 

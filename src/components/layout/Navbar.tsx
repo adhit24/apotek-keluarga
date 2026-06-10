@@ -12,6 +12,7 @@ const navLinks = [
   { href: '/about', label: 'Dokter' },
   { href: '/services', label: 'Layanan' },
   { href: '/schedule', label: 'Jadwal' },
+  { href: '/articles', label: 'Artikel' },
   { href: '/queue', label: 'Antrian' },
   { href: '/contact', label: 'Kontak' },
 ]

@@ -1,9 +1,22 @@
+import type { Metadata } from 'next'
 import Image from 'next/image'
 import Link from 'next/link'
 import { CheckCircle2, GraduationCap, Award, ArrowRight, Calendar } from 'lucide-react'
 import Navbar from '@/components/layout/Navbar'
 import Footer from '@/components/layout/Footer'
 import { doctors } from '@/lib/data'
+
+export const metadata: Metadata = {
+  title: 'Tentang Kami — dr. Wildan A. Sutrisno, SpOG',
+  description:
+    'Kenali dr. Wildan A. Sutrisno, SpOG — dokter kandungan berpengalaman di Cirebon. Spesialis obstetri & ginekologi, USG, program hamil, dan kesehatan keluarga.',
+  keywords: ['dr Wildan SpOG Cirebon', 'dokter kandungan Cirebon', 'SpOG Cirebon', 'Apotek Keluarga'],
+  openGraph: {
+    title: 'Tentang dr. Wildan A. Sutrisno, SpOG | Apotek Keluarga',
+    description: 'Dokter kandungan spesialis obstetri & ginekologi di Cirebon.',
+    type: 'website',
+  },
+}
 
 export default function AboutPage() {
   const wildan = doctors.find((d) => d.id === 'dr-wildan')!
