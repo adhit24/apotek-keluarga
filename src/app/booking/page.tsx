@@ -550,6 +550,14 @@ function Success({ b, appointmentId, queueNumber }: { b: BookingState; appointme
     `📅 ${dateStr}, pukul ${b.slot?.time}\n\n` +
     `Mohon konfirmasinya. Terima kasih 🙏`
   )
+  const followUpMsg = encodeURIComponent(
+    `Halo Apotek Keluarga 👋\n\n` +
+    `Saya ingin menjadwalkan kunjungan kontrol:\n` +
+    `📋 Kunjungan sebelumnya: *${appointmentId}*\n` +
+    `🩺 Layanan: ${b.serviceName}\n` +
+    `👩‍⚕️ Dokter: ${b.doctor?.name}\n\n` +
+    `Mohon bantu jadwalkan kontrol berikutnya. Terima kasih 🙏`
+  )
 
   return (
     <motion.div initial={{ opacity: 0, scale: 0.92 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }} className="text-center py-6">
@@ -604,6 +612,20 @@ function Success({ b, appointmentId, queueNumber }: { b: BookingState; appointme
           </a>
           <Link href="/queue" className="btn-outline">Pantau Antrian</Link>
           <Link href="/" className="btn-outline">Beranda</Link>
+        </div>
+
+        {/* Follow-up CTA */}
+        <div className="mt-8 pt-6 border-t border-blush/40 max-w-xs mx-auto">
+          <p className="text-xs text-muted mb-3">Ingin jadwalkan kunjungan kontrol berikutnya?</p>
+          <a
+            href={`https://wa.me/6285220024400?text=${followUpMsg}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center justify-center gap-2 w-full py-3 px-5 rounded-btn border-2 border-sage text-sage font-bold text-sm hover:bg-sage hover:text-white transition-all"
+          >
+            📅 Booking Kontrol Berikutnya
+          </a>
+          <p className="text-xs text-muted/60 mt-2">Kami akan bantu atur jadwal kontrol lewat WhatsApp</p>
         </div>
       </motion.div>
     </motion.div>

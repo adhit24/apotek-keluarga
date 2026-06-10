@@ -166,6 +166,36 @@ export default function DashboardPage() {
                   ) : (
                     <>
                       {upcoming.map((a) => <AppointmentCard key={a.id} a={a} />)}
+
+                      {/* Jadwal Kontrol Berikutnya */}
+                      <div className="bg-surface rounded-card shadow-soft p-5 mt-2">
+                        <div className="flex items-center gap-2 mb-3">
+                          <div className="w-8 h-8 rounded-lg bg-sage-light/40 flex items-center justify-center shrink-0">
+                            <Calendar size={15} className="text-sage-dark" />
+                          </div>
+                          <div>
+                            <div className="font-bold text-ink text-sm">Jadwal Kontrol Berikutnya</div>
+                            <div className="text-xs text-muted">Jangan lewatkan jadwal kontrol rutin Anda</div>
+                          </div>
+                        </div>
+                        <p className="text-sm text-muted mb-4 leading-relaxed">
+                          Kontrol rutin membantu dokter memantau perkembangan kesehatan Anda secara optimal.
+                        </p>
+                        <div className="flex flex-col sm:flex-row gap-2">
+                          <Link href="/booking" className="btn-primary text-sm flex-1 justify-center">
+                            <Calendar size={14} /> Booking Kontrol
+                          </Link>
+                          <a
+                            href={`https://wa.me/6285220024400?text=${encodeURIComponent('Halo Apotek Keluarga 👋\n\nSaya ingin menjadwalkan kunjungan kontrol berikutnya. Mohon bantu atur jadwalnya. Terima kasih 🙏')}`}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="btn-wa text-sm flex-1 justify-center"
+                          >
+                            <span>💬</span> Tanya via WA
+                          </a>
+                        </div>
+                      </div>
+
                       <div className="pt-2 text-center">
                         <Link href="/booking" className="btn-outline">
                           <Calendar size={15} /> Tambah Janji Baru
