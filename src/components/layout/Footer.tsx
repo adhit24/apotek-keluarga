@@ -1,133 +1,94 @@
 import Link from 'next/link'
 import Image from 'next/image'
-import { MapPin, Phone, Clock, AtSign } from 'lucide-react'
+import { MapPin, Phone, AtSign } from 'lucide-react'
+
+const navLinks = [
+  { href: '/', label: 'Beranda' },
+  { href: '/about', label: 'Dokter' },
+  { href: '/services', label: 'Layanan' },
+  { href: '/schedule', label: 'Jadwal' },
+  { href: '/articles', label: 'Artikel' },
+  { href: '/booking', label: 'Buat Janji' },
+  { href: '/queue', label: 'Antrian' },
+  { href: '/contact', label: 'Kontak' },
+]
 
 export default function Footer() {
   return (
-    <footer className="bg-ink text-white/80">
-      {/* Main footer */}
-      <div className="max-w-6xl mx-auto px-4 py-14 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
-        {/* Brand */}
-        <div className="lg:col-span-1">
-          <div className="flex items-center gap-3 mb-4">
+    <footer className="bg-ink text-white/70">
+      {/* Main row */}
+      <div className="max-w-6xl mx-auto px-4 py-10">
+        <div className="flex flex-col md:flex-row md:items-center justify-between gap-8">
+
+          {/* Brand */}
+          <div className="flex items-center gap-3 shrink-0">
             <div className="relative w-16 h-16 bg-white rounded-xl p-1.5 shrink-0">
               <Image src="/logo.png" alt="Apotek Keluarga" fill className="object-contain p-0.5" />
             </div>
             <div className="leading-snug">
               <div className="font-extrabold text-base text-white tracking-widest">APOTEK</div>
-              <div className="font-extrabold text-base tracking-widest" style={{color: '#EAC9CD'}}>KELUARGA</div>
+              <div className="font-extrabold text-base tracking-widest" style={{ color: '#EAC9CD' }}>KELUARGA</div>
+              <div className="text-xs text-white/40 mt-0.5">dr. Wildan A. Sutrisno, SpOG — Cirebon</div>
             </div>
           </div>
-          <p className="text-sm leading-relaxed mb-5 text-white/60">
-            Teman perjalanan kesehatan ibu dan keluarga. Hangat, profesional, terpercaya — di Cirebon.
-          </p>
-          <a
-            href="https://wa.me/6285220024400"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 bg-[#25D366] text-white text-sm font-600 px-4 py-2.5 rounded-btn hover:bg-[#20ba5a] transition-colors"
-          >
-            <span>💬</span>
-            WhatsApp Kami
-          </a>
-        </div>
 
-        {/* Quick links */}
-        <div>
-          <h4 className="font-700 text-white text-sm mb-4 uppercase tracking-wider">Navigasi</h4>
-          <ul className="space-y-2.5">
-            {[
-              { href: '/', label: 'Beranda' },
-              { href: '/about', label: 'Profil Dokter' },
-              { href: '/services', label: 'Layanan' },
-              { href: '/schedule', label: 'Jadwal Praktek' },
-              { href: '/booking', label: 'Buat Janji' },
-              { href: '/queue', label: 'Cek Antrian' },
-              { href: '/dashboard', label: 'Dashboard Pasien' },
-              { href: '/contact', label: 'Kontak' },
-            ].map((link) => (
-              <li key={link.href}>
-                <Link
-                  href={link.href}
-                  className="text-sm text-white/60 hover:text-white transition-colors"
-                >
-                  {link.label}
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </div>
-
-        {/* Services */}
-        <div>
-          <h4 className="font-700 text-white text-sm mb-4 uppercase tracking-wider">Layanan Utama</h4>
-          <ul className="space-y-2.5">
-            {[
-              'Konsultasi Kandungan',
-              'USG 2D / 3D / 4D',
-              'Program Hamil',
-              'Pemantauan Kehamilan',
-              'KB & Keluarga Berencana',
-              'Konsultasi Menyusui',
-              'Konsultasi THT',
-            ].map((s) => (
-              <li key={s} className="text-sm text-white/60">
-                {s}
-              </li>
-            ))}
-          </ul>
-        </div>
-
-        {/* Contact */}
-        <div>
-          <h4 className="font-700 text-white text-sm mb-4 uppercase tracking-wider">Kontak & Lokasi</h4>
-          <ul className="space-y-4">
-            <li className="flex gap-3">
-              <MapPin size={16} className="text-rose-light mt-0.5 shrink-0" />
-              <span className="text-sm text-white/60 leading-relaxed">
-                Jl. Gerilyawan No.5, Simaja Selatan, Kesambi, Kota Cirebon, Jawa Barat
-              </span>
-            </li>
-            <li className="flex gap-3">
-              <Phone size={16} className="text-rose-light mt-0.5 shrink-0" />
-              <div className="text-sm text-white/60 space-y-1">
-                <a href="tel:085220024400" className="block hover:text-white transition-colors">
-                  0852-2002-4400
-                </a>
-                <a href="tel:08112421983" className="block hover:text-white transition-colors">
-                  0811-2421-983
-                </a>
-              </div>
-            </li>
-            <li className="flex gap-3">
-              <Clock size={16} className="text-rose-light mt-0.5 shrink-0" />
-              <div className="text-sm text-white/60 space-y-1">
-                <div>Senin–Sabtu</div>
-                <div>Sesuai jadwal praktek</div>
-              </div>
-            </li>
-            <li className="flex gap-3">
-              <AtSign size={16} className="text-rose-light mt-0.5 shrink-0" />
-              <a
-                href="https://instagram.com/apotekkeluargacirebon"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-sm text-white/60 hover:text-white transition-colors"
+          {/* Nav links */}
+          <nav className="flex flex-wrap gap-x-5 gap-y-2">
+            {navLinks.map((link) => (
+              <Link
+                key={link.href}
+                href={link.href}
+                className="text-sm text-white/50 hover:text-white transition-colors"
               >
-                @apotekkeluargacirebon
-              </a>
-            </li>
-          </ul>
+                {link.label}
+              </Link>
+            ))}
+          </nav>
+
+          {/* Contact quick */}
+          <div className="flex flex-col gap-2 text-sm text-white/50 shrink-0">
+            <a href="https://wa.me/6285220024400" target="_blank" rel="noopener noreferrer"
+              className="flex items-center gap-2 hover:text-white transition-colors">
+              <Phone size={13} />
+              0852-2002-4400
+            </a>
+            <div className="flex items-center gap-2">
+              <MapPin size={13} />
+              Jl. Gerilyawan No.5, Cirebon
+            </div>
+            <a href="https://instagram.com/apotekkeluargacirebon" target="_blank" rel="noopener noreferrer"
+              className="flex items-center gap-2 hover:text-white transition-colors">
+              <AtSign size={13} />
+              @apotekkeluargacirebon
+            </a>
+          </div>
         </div>
       </div>
 
       {/* Bottom bar */}
       <div className="border-t border-white/10">
-        <div className="max-w-6xl mx-auto px-4 py-5 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-white/40">
-          <span>© 2025 Apotek Keluarga Cirebon. Hak cipta dilindungi.</span>
-          <span className="script-accent text-white/30 text-base">
-            Teman perjalanan kesehatan keluarga
+        <div className="max-w-6xl mx-auto px-4 py-4 flex flex-col sm:flex-row items-center justify-between gap-3">
+          <span className="text-xs text-white/30">
+            © 2025 Apotek Keluarga Cirebon. Hak cipta dilindungi.
           </span>
+
+          {/* Powered by Kinaryaloka */}
+          <a
+            href="https://www.kinaryaloka.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center gap-2 group"
+          >
+            <span className="text-xs text-white/30 group-hover:text-white/50 transition-colors">
+              Powered by
+            </span>
+            <div className="relative w-5 h-5 rounded-md overflow-hidden shrink-0 opacity-60 group-hover:opacity-90 transition-opacity">
+              <Image src="/logo_kinarya.png" alt="Kinaryaloka" fill className="object-contain" />
+            </div>
+            <span className="text-xs font-semibold text-white/40 group-hover:text-white/70 transition-colors tracking-wide">
+              Kinaryaloka
+            </span>
+          </a>
         </div>
       </div>
     </footer>
