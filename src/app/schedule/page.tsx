@@ -1,9 +1,9 @@
 import Link from 'next/link'
 import Image from 'next/image'
-import { Clock, ArrowRight, Calendar } from 'lucide-react'
+import { Clock, ArrowRight, Calendar, MapPin } from 'lucide-react'
 import Navbar from '@/components/layout/Navbar'
 import Footer from '@/components/layout/Footer'
-import { doctors } from '@/lib/data'
+import { doctors, locations } from '@/lib/data'
 
 const DAY_ORDER = ['Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu', 'Minggu']
 
@@ -26,11 +26,11 @@ export default function SchedulePage() {
           </p>
         </section>
 
-        {/* Doctors schedules */}
+        {/* Doctors */}
         {doctors.map((doc) => (
-          <section key={doc.id} className="max-w-6xl mx-auto px-4 mb-12">
+          <section key={doc.id} className="max-w-6xl mx-auto px-4 mb-14">
             {/* Doctor header */}
-            <div className="bg-surface rounded-2xl shadow-soft p-6 mb-5 flex items-center gap-5">
+            <div className="bg-surface rounded-2xl shadow-soft p-6 mb-6 flex items-center gap-5">
               <div className="relative w-16 h-16 rounded-xl overflow-hidden bg-blush shrink-0">
                 {doc.id === 'dr-wildan' ? (
                   <Image src="/dr-wildan.png" alt={doc.name} fill className="object-cover object-top" />
@@ -47,63 +47,75 @@ export default function SchedulePage() {
               </Link>
             </div>
 
-            {/* Schedule grid */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-              {DAY_ORDER.map((day) => {
-                const schedule = doc.schedule.find((s) => s.day === day)
-                const hasSessions = schedule && schedule.sessions.length > 0
-                return (
-                  <div
-                    key={day}
-                    className={`rounded-card p-5 ${hasSessions ? 'bg-surface shadow-soft' : 'bg-cream opacity-60'}`}
-                  >
-                    <div className="flex items-center justify-between mb-4">
-                      <h3 className={`font-bold text-base ${hasSessions ? 'text-ink' : 'text-muted'}`}>
-                        {day}
-                      </h3>
-                      {!hasSessions && (
-                        <span className="text-xs text-muted/60 italic">Libur</span>
-                      )}
-                    </div>
-
-                    {hasSessions &&
-                      schedule.sessions.map((session) => {
-                        const available = session.slots.filter((s) => s.taken < s.quota).length
-                        const total = session.slots.length
-                        return (
-                          <div key={session.id} className="mb-3 last:mb-0">
-                            <div className="flex items-center gap-2 mb-2">
-                              <span className="text-xs font-bold bg-blush text-burgundy px-2 py-0.5 rounded-full">
-                                {session.label}
-                              </span>
-                            </div>
-                            <div className="flex items-center gap-2 text-sm text-muted mb-1">
-                              <Clock size={13} />
-                              {session.startTime} – {session.endTime}
-                            </div>
-                            <div className="text-xs text-sage-dark font-medium">
-                              {available}/{total} slot tersedia
-                            </div>
-
-                            {/* Mini slot preview */}
-                            <div className="flex gap-1 mt-2 flex-wrap">
-                              {session.slots.map((slot) => (
-                                <div
-                                  key={slot.id}
-                                  title={`${slot.time} — ${slot.taken >= slot.quota ? 'Penuh' : `${slot.quota - slot.taken} sisa`}`}
-                                  className={`w-2 h-2 rounded-full ${
-                                    slot.taken >= slot.quota ? 'bg-muted-light' : 'bg-sage'
-                                  }`}
-                                />
-                              ))}
-                            </div>
-                          </div>
-                        )
-                      })}
+            {/* Per-location schedules */}
+            {doc.locationSchedules.map((ls) => {
+              const location = locations.find((l) => l.id === ls.locationId)
+              if (!location) return null
+              return (
+                <div key={ls.locationId} className="mb-8">
+                  <div className="flex items-center gap-2 mb-4">
+                    <MapPin size={14} className="text-rose" />
+                    <span className="font-bold text-ink text-base">{location.name}</span>
+                    <span className="text-xs text-muted">— {location.address}</span>
                   </div>
-                )
-              })}
-            </div>
+
+                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                    {DAY_ORDER.map((day) => {
+                      const daySched = ls.schedule.find((s) => s.day === day)
+                      const hasSessions = daySched && daySched.sessions.length > 0
+                      return (
+                        <div
+                          key={day}
+                          className={`rounded-card p-5 ${hasSessions ? 'bg-surface shadow-soft' : 'bg-cream opacity-60'}`}
+                        >
+                          <div className="flex items-center justify-between mb-4">
+                            <h3 className={`font-bold text-base ${hasSessions ? 'text-ink' : 'text-muted'}`}>
+                              {day}
+                            </h3>
+                            {!hasSessions && (
+                              <span className="text-xs text-muted/60 italic">Tidak praktek</span>
+                            )}
+                          </div>
+
+                          {hasSessions &&
+                            daySched.sessions.map((session) => {
+                              const available = session.slots.filter((s) => s.taken < s.quota).length
+                              const total = session.slots.length
+                              return (
+                                <div key={session.id} className="mb-3 last:mb-0">
+                                  <div className="flex items-center gap-2 mb-2">
+                                    <span className="text-xs font-bold bg-blush text-burgundy px-2 py-0.5 rounded-full">
+                                      {session.label}
+                                    </span>
+                                  </div>
+                                  <div className="flex items-center gap-2 text-sm text-muted mb-1">
+                                    <Clock size={13} />
+                                    {session.startTime} – {session.endTime}
+                                  </div>
+                                  <div className="text-xs text-sage-dark font-medium">
+                                    {available}/{total} slot tersedia
+                                  </div>
+                                  <div className="flex gap-1 mt-2 flex-wrap">
+                                    {session.slots.map((slot) => (
+                                      <div
+                                        key={slot.id}
+                                        title={`${slot.time} — ${slot.taken >= slot.quota ? 'Penuh' : `${slot.quota - slot.taken} sisa`}`}
+                                        className={`w-2 h-2 rounded-full ${
+                                          slot.taken >= slot.quota ? 'bg-muted-light' : 'bg-sage'
+                                        }`}
+                                      />
+                                    ))}
+                                  </div>
+                                </div>
+                              )
+                            })}
+                        </div>
+                      )
+                    })}
+                  </div>
+                </div>
+              )
+            })}
 
             <div className="sm:hidden mt-4 text-center">
               <Link href="/booking" className="btn-primary w-full">

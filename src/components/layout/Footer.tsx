@@ -43,6 +43,7 @@ export default function Footer() {
               { href: '/schedule', label: 'Jadwal Praktek' },
               { href: '/booking', label: 'Buat Janji' },
               { href: '/queue', label: 'Cek Antrian' },
+              { href: '/dashboard', label: 'Dashboard Pasien' },
               { href: '/contact', label: 'Kontak' },
             ].map((link) => (
               <li key={link.href}>
