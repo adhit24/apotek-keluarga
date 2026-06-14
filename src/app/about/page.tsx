@@ -156,7 +156,21 @@ export default function AboutPage() {
         {/* dr. Febryanti */}
         <section className="bg-cream py-16">
           <div className="max-w-6xl mx-auto px-4">
-            <div className="grid lg:grid-cols-3 gap-10">
+            <div className="grid lg:grid-cols-4 gap-10 items-start">
+
+              {/* Photo */}
+              <div className="lg:col-span-1 flex flex-col items-center lg:items-start">
+                <div className="arch-card bg-blush/40 overflow-hidden aspect-[3/4] w-full max-w-[220px] mx-auto lg:mx-0 relative">
+                  <Image
+                    src="/dr-febryanti.png"
+                    alt={feb.name}
+                    fill
+                    className="object-cover object-top"
+                  />
+                </div>
+              </div>
+
+              {/* Bio + expertise */}
               <div className="lg:col-span-2">
                 <div className="section-tag mb-5">Spesialis THT</div>
                 <h2 className="text-3xl font-extrabold text-ink mb-1">dr. Febryanti Purnamasari</h2>
@@ -198,7 +212,7 @@ export default function AboutPage() {
               </div>
 
               {/* Schedule card */}
-              <div className="bg-surface rounded-card p-6 shadow-soft h-fit">
+              <div className="lg:col-span-1 bg-surface rounded-card p-6 shadow-soft h-fit">
                 <div className="flex items-center gap-2 mb-5">
                   <Calendar size={18} className="text-rose" />
                   <h3 className="font-bold text-ink text-sm uppercase tracking-wider">Jadwal Praktek</h3>
