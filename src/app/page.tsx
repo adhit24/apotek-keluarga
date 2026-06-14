@@ -17,6 +17,16 @@ import {
 import Navbar from '@/components/layout/Navbar'
 import Footer from '@/components/layout/Footer'
 import { services, testimonials, articles, faqs, whyItems } from '@/lib/data'
+import TrustBar from '@/components/home/TrustBar'
+import PatientJourney from '@/components/home/PatientJourney'
+import CommonConcerns from '@/components/home/CommonConcerns'
+import FirstVisit from '@/components/home/FirstVisit'
+import GoogleReviews from '@/components/home/GoogleReviews'
+import PregnancyCompanion from '@/components/home/PregnancyCompanion'
+import PregnancyWeeks from '@/components/home/PregnancyWeeks'
+import HealthTools from '@/components/home/HealthTools'
+import ClinicGallery from '@/components/home/ClinicGallery'
+import EmotionalCTA from '@/components/home/EmotionalCTA'
 
 // ── Animation primitives ──────────────────────────────────────────────────────
 function FadeUp({
@@ -796,15 +806,24 @@ export default function HomePage() {
     <>
       <Navbar />
       <main>
+        {/* ── Core ── */}
         <Hero />
+        <TrustBar />
         <FeaturedServices />
+        <PatientJourney />
         <AboutDoctorSection />
+        <CommonConcerns />
         <WhyChooseUs />
-        <Testimonials />
+        <FirstVisit />
+        <GoogleReviews />
         <SchedulePreview />
+        <PregnancyCompanion />
+        <PregnancyWeeks />
+        <ClinicGallery />
         <ArticlesPreview />
+        <HealthTools />
         <FAQSection />
-        <CTASection />
+        <EmotionalCTA />
       </main>
       <Footer />
     </>
