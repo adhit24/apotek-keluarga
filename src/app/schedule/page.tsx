@@ -45,11 +45,7 @@ export default function SchedulePage() {
             {/* Doctor header */}
             <div className="bg-surface rounded-2xl shadow-soft p-6 mb-6 flex items-center gap-5">
               <div className="relative w-16 h-16 rounded-xl overflow-hidden bg-blush shrink-0">
-                {doc.id === 'dr-wildan' ? (
-                  <Image src="/dr-wildan.png" alt={doc.name} fill className="object-cover object-top" />
-                ) : (
-                  <div className="w-full h-full flex items-center justify-center text-3xl">👩‍⚕️</div>
-                )}
+                <Image src={doc.photo} alt={doc.name} fill className="object-cover object-top" />
               </div>
               <div className="flex-1">
                 <h2 className="font-extrabold text-ink text-xl">{doc.name}, {doc.title}</h2>
