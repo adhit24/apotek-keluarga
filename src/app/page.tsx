@@ -12,6 +12,9 @@ import {
   Phone,
   ArrowRight,
   Stethoscope,
+  User,
+  Heart,
+  BookOpen,
   CheckCircle2,
 } from 'lucide-react'
 import Navbar from '@/components/layout/Navbar'
@@ -800,29 +803,133 @@ function CTASection() {
   )
 }
 
+// ── Tab Navigation ────────────────────────────────────────────────────────────
+const HOME_TABS = [
+  { id: 'layanan',   label: 'Layanan',   Icon: Stethoscope },
+  { id: 'dokter',    label: 'Dokter',    Icon: User },
+  { id: 'kehamilan', label: 'Kehamilan', Icon: Heart },
+  { id: 'jadwal',    label: 'Jadwal',    Icon: Clock },
+  { id: 'info',      label: 'Ulasan & Info', Icon: BookOpen },
+] as const
+
+type TabId = typeof HOME_TABS[number]['id']
+
+function TabNav({
+  active,
+  onChange,
+}: {
+  active: TabId
+  onChange: (id: TabId) => void
+}) {
+  return (
+    <div className="sticky top-[72px] z-40 bg-white/96 backdrop-blur-md border-b border-blush/40 shadow-sm">
+      <div className="max-w-6xl mx-auto px-3">
+        <div
+          className="flex gap-1 py-2 overflow-x-auto"
+          style={{ scrollbarWidth: 'none', WebkitOverflowScrolling: 'touch' }}
+        >
+          {HOME_TABS.map(({ id, label, Icon }) => {
+            const isActive = active === id
+            return (
+              <motion.button
+                key={id}
+                onClick={() => onChange(id)}
+                whileTap={{ scale: 0.95 }}
+                className={`relative flex items-center gap-1.5 px-3.5 py-2 rounded-full text-sm font-semibold whitespace-nowrap flex-shrink-0 transition-colors duration-200 ${
+                  isActive ? 'text-white' : 'text-ink/55 hover:text-ink'
+                }`}
+              >
+                {isActive && (
+                  <motion.span
+                    layoutId="home-tab-pill"
+                    className="absolute inset-0 bg-rose rounded-full"
+                    transition={{ type: 'spring', stiffness: 420, damping: 32 }}
+                  />
+                )}
+                <Icon size={13} className="relative z-10 shrink-0" />
+                <span className="relative z-10">{label}</span>
+              </motion.button>
+            )
+          })}
+        </div>
+      </div>
+    </div>
+  )
+}
+
 // ── Page ──────────────────────────────────────────────────────────────────────
 export default function HomePage() {
+  const [activeTab, setActiveTab] = useState<TabId>('layanan')
+  const contentRef = useRef<HTMLDivElement>(null)
+
+  const handleTabChange = (id: TabId) => {
+    setActiveTab(id)
+    // Scroll to just below the sticky tab bar on tab switch
+    setTimeout(() => {
+      contentRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' })
+    }, 50)
+  }
+
   return (
     <>
       <Navbar />
       <main>
-        {/* ── Core ── */}
+        {/* Always visible above fold */}
         <Hero />
         <TrustBar />
-        <FeaturedServices />
-        <PatientJourney />
-        <AboutDoctorSection />
-        <CommonConcerns />
-        <WhyChooseUs />
-        <FirstVisit />
-        <GoogleReviews />
-        <SchedulePreview />
-        <PregnancyCompanion />
-        <PregnancyWeeks />
-        <ClinicGallery />
-        <ArticlesPreview />
-        <HealthTools />
-        <FAQSection />
+
+        {/* Sticky tab navigation */}
+        <TabNav active={activeTab} onChange={handleTabChange} />
+
+        {/* Tab content — only one tab visible at a time */}
+        <div ref={contentRef} className="min-h-[60vh]">
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={activeTab}
+              initial={{ opacity: 0, y: 14, filter: 'blur(4px)' }}
+              animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
+              exit={{ opacity: 0, y: -8, filter: 'blur(2px)' }}
+              transition={{ duration: 0.28, ease: [0.22, 1, 0.36, 1] }}
+            >
+              {activeTab === 'layanan' && (
+                <>
+                  <FeaturedServices />
+                  <PatientJourney />
+                </>
+              )}
+              {activeTab === 'dokter' && (
+                <>
+                  <AboutDoctorSection />
+                  <WhyChooseUs />
+                  <CommonConcerns />
+                </>
+              )}
+              {activeTab === 'kehamilan' && (
+                <>
+                  <FirstVisit />
+                  <PregnancyWeeks />
+                  <HealthTools />
+                </>
+              )}
+              {activeTab === 'jadwal' && (
+                <>
+                  <SchedulePreview />
+                  <PregnancyCompanion />
+                </>
+              )}
+              {activeTab === 'info' && (
+                <>
+                  <GoogleReviews />
+                  <ArticlesPreview />
+                  <ClinicGallery />
+                  <FAQSection />
+                </>
+              )}
+            </motion.div>
+          </AnimatePresence>
+        </div>
+
+        {/* Always visible closing CTA */}
         <EmotionalCTA />
       </main>
       <Footer />

@@ -99,7 +99,7 @@ export default function GoogleReviews() {
   const gridInView = useInView(gridRef, { once: true, margin: '-40px' })
 
   return (
-    <section className="py-20 md:py-28 bg-cream overflow-hidden">
+    <section className="py-10 md:py-16 bg-cream overflow-hidden">
       <div className="max-w-6xl mx-auto px-4">
 
         {/* Header */}

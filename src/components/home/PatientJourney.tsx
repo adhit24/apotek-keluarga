@@ -83,7 +83,7 @@ export default function PatientJourney() {
   const lineInView = useInView(lineRef, { once: true, margin: '-100px' })
 
   return (
-    <section className="py-20 md:py-28 bg-white overflow-hidden">
+    <section className="py-10 md:py-16 bg-white overflow-hidden">
       <div className="max-w-6xl mx-auto px-4">
 
         {/* Header */}

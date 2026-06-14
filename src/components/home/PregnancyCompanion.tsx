@@ -54,7 +54,7 @@ export default function PregnancyCompanion() {
   const gridInView = useInView(gridRef, { once: true, margin: '-40px' })
 
   return (
-    <section className="py-20 md:py-28 bg-white overflow-hidden">
+    <section className="py-10 md:py-16 bg-white overflow-hidden">
       <div className="max-w-6xl mx-auto px-4">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
 

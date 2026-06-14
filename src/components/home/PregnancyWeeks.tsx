@@ -73,7 +73,7 @@ export default function PregnancyWeeks() {
   const activeWeek = weeks[active]
 
   return (
-    <section className="py-20 md:py-28 bg-cream overflow-hidden">
+    <section className="py-10 md:py-16 bg-cream overflow-hidden">
       <div className="max-w-6xl mx-auto px-4">
 
         {/* Header */}

@@ -28,7 +28,7 @@ function FadeUp({ children, delay = 0, className = '' }: { children: React.React
 
 export default function EmotionalCTA() {
   return (
-    <section className="py-20 md:py-28 bg-cream overflow-hidden relative">
+    <section className="py-10 md:py-16 bg-cream overflow-hidden relative">
       {/* Background ambient */}
       <div className="absolute top-0 right-0 w-72 h-72 bg-blush/40 rounded-full translate-x-1/3 -translate-y-1/3 blur-3xl pointer-events-none" />
       <div className="absolute bottom-0 left-0 w-56 h-56 bg-sage-light/30 rounded-full -translate-x-1/4 translate-y-1/4 blur-3xl pointer-events-none" />
